@@ -1,7 +1,6 @@
 import socket 
 from bs4 import BeautifulSoup
 
-
 def client(url):
     if("https://" in url):
         url_temp = url.split("https://")[-1]
@@ -64,9 +63,8 @@ def downloadStatic(new_static, url):
         archive_type = "rb"
     else:
         url_temp = new_static.get("href")
-    name = str(url_temp).split("/")[-1]
+    name = str(url_temp).split("/")[-1] 
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-    print(url_temp)
     client.connect((url, 80)) 
     str_request = f'GET {url_temp} HTTP/1.1\r\nHost:{url}\r\nConnection: close\r\n\r\n'
     client.send(bytes(str_request,'utf-8'))
